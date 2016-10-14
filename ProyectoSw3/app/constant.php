@@ -1,0 +1,12 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class constant extends Model
+{
+    //
+    protected $table = "constants";
+    protected $fillable = ['buy_price', 'type', 'description'];
+}
