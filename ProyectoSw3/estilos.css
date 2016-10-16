@@ -4,9 +4,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Oct 16, 2016, 6:27:53 AM
+    Created on : Oct 16, 2016
     Author     : ju4nd3r
 */
+
+
 @font-face {
     font-family: Roboto;
     src: url(shttps://fonts.googleapis.com/css?family=Roboto);
@@ -19,14 +21,6 @@ and open the template in the editor.
 input[type="button"] {
     background-color: lavender;
     font-family: 'Roboto';
-}
-
-
-/*------------------LOGIN------------------------*/
-
-.login {
-    width: 100%;
-    
 }
 
 header {
@@ -45,6 +39,57 @@ footer{
     color: white;
     
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/*La cabecera y las filas de la tabla alinean su texto a la izquierda
+y un acolchonado (padding) de 8 pixeles*/
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+/*cada fila de por medio se pinta de gris claro*/
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+/*la cabecera de la tabla */
+th {
+    background-color: darkcyan;
+    color: white;
+}
+
+/*cuando se pasa el cursor encima de las filas de la tabla adquiere las 
+siguientes propiedades*/
+tr:hover {
+    background-color: gainsboro;
+}
+
+/*estilos para el combobox*/
+select  {
+    height: 30px;
+    background-color: beige;
+    font-size: 16px;
+    width: 100%;
+    padding-left: 8px;
+}
+
+.contenido, nav {
+    font-size: 16px;
+}
+
+/*------------------LOGIN------------------------*/
+
+.login {
+    width: 100%;
+    
+}
+
+
 
 .login>.formContainer {
     margin: 0 auto;
