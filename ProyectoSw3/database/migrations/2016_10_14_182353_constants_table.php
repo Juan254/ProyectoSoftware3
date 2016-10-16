@@ -15,9 +15,16 @@ class ConstantsTable extends Migration
     {
         Schema::create('constants', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('buy_price');
+            $table->float('pet');
+            $table->float('board');
+            $table->float('archive');
+            $table->float('blow');
+            $table->float('junk');
+            $table->float('metal');
+            $table->float('plega');
+            $table->float('glass');
+            $table->float('frame');
             $table->text('descripton');
-            $table->enum('type', ['Pet','Cartón','Archivo','Soplado','Chatarra','Metal','Plega','Vidrio','Marco']);
             $table->timestamps();
         });
     }

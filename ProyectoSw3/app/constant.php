@@ -8,5 +8,5 @@ class constant extends Model
 {
     //
     protected $table = "constants";
-    protected $fillable = ['buy_price', 'type', 'description'];
+    protected $fillable = ['buy_price', 'pet','board','archive','blow','junk','metal','plega','glass','frame', 'description'];
 }
