@@ -12,10 +12,39 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('welcome');
 });
 
 
-Route::get('main', function () {
+Route::group(['prefix' => 'admin'], function () {
+   
+   Route::resource('users' , 'UsersController');
+
+   Route::resource('material_provider', 'MaterialProviderController');
+
+   Route::get('material_provider/{id}/destroy', [
+   			'uses'	=>	'MaterialProviderController@destroy',
+   			'as'	=>	'material_provider.destroy'
+   	]);
+
+   Route::resource('person', 'PersonsController');
+
+   Route::resource('constant', 'ConstantsController');
+
+   Route::get('indicator/indexIndicatorTwo', [
+            'uses'   => 'indicatorsController@indexIndicatorTwo',
+            'as'     => 'indicators.indexIndicatorTwo'
+   ]);
+
+
+   Route::get('indicator/indexIndicatorThree', [
+            'uses'   => 'indicatorsController@indexIndicatorThree',
+            'as'     => 'indicators.indexIndicatorThree'
+   ]);
+
+   Route::resource('indicator', 'IndicatorsController');
+
+
+
    
 });

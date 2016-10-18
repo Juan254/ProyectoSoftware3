@@ -17,10 +17,10 @@ class PersonsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('last_name');
-            $table->string('id_card');
+            $table->string('id_card')->unique();
             $table->string('municipality');
             $table->integer('age');
-            $table->integer('social_number');
+            $table->string('social_number');
             $table->timestamps();
         });
     }

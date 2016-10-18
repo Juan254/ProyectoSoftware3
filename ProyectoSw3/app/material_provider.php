@@ -8,5 +8,5 @@ class material_provider extends Model
 {
     //
     protected $table = "material_provider";
-    protected $fillable = ['material_type', 'provider_type', 'quantity', 'municipality', 'price', 'date'];
+    protected $fillable = ['material_type', 'provider_type', 'quantity', 'municipality', 'buy_price', 'date'];
 }
