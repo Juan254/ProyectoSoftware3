@@ -12,6 +12,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="{{asset('css/estilos.css')}}">
         <link rel="stylesheet" type="text/css"
               href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="shortcut icon" type="image/png" href="{{ asset ('Recursos/imagenes/editar.png')}}"/>
     </head>
     <body class="inicioAdmin">
         <!-- Esta cabecera está presente en todas las páginas-->
@@ -25,11 +26,12 @@ and open the template in the editor.
                         <li><a href="{{ route( 'indicator.index') }}">Cantidad de material que entra a la fábrica</a></li>
                         <li><a href="{{ route('indicators.indexIndicatorTwo')}}">Cantidad de material por C.Acopio y comunas</a></li>
                         <li><a href="{{ route('indicators.indexIndicatorThree')}}">Cantidad de material por cliente</a></li>
+
                     </ul>
                 </li>
-                <li><a>Indicadores Sociales</a></li>
+                <li><a href="{{ route('socialIndicator.index') }}" >Indicadores Sociales</a></li>
                 <li><a href="{{route( 'material_provider.index')}}"  >Lista de registros</a></li>
-
+                <li><a href="{{ route('constant.index')}}">Precio de los materiales</a></li>
             </ul>
         </nav>
         <br/>

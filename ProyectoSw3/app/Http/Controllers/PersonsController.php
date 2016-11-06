@@ -44,15 +44,30 @@ class PersonsController extends Controller
         
         if ($request->social_number == '' ||  $request->profesion == '') {
             echo "<script> alert('Debe seleccionar un oficio y un estado para la persona.')</script>";
-            return view('admin/materials_providers/create');
+            return view('admin.persons.create');
         }else{
-            $oficio= "".$request->profesion." ".$request->social_number;
-            $person= new person($request->all());
-            $person->social_number = $oficio;
-            $person->save();
-            return view('admin/persons/create');
-        }
+            if ($request->profesion == 'Recuperador' && $request->social_number == 'Caracterizado' ||
+                $request->profesion == 'Recuperador' && $request->social_number == 'Asociado' ||
+                $request->profesion == 'Recuperador' && $request->social_number == 'Capacitado en asociatividad' ||
+                $request->profesion == 'Recuperador' && $request->social_number == 'Capacitado en empresarialidad'
+                ) {
+                $oficio= "".$request->profesion." ".$request->social_number;
+                $person= new person($request->all());
+                $person->social_number = $oficio;
+                $person->save();
+                return redirect()->route('socialIndicator.index');
 
+            } elseif ($request->profesion == 'Reciclador') {
+                $oficio= "".$request->profesion." ".$request->social_number;
+                $person= new person($request->all());
+                $person->social_number = $oficio;
+                $person->save();
+                return redirect()->route('socialIndicator.index');
+            }else{
+                echo "<script> alert('Ese estado no está disponible para el Recuperador.')</script>";
+                return view('admin.persons.create');
+            }
+        }
     }
 
     /**
@@ -95,8 +110,11 @@ class PersonsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $social_number)
     {
-        //
+        $person = person::find($id);
+        $person->delete();
+        flash('Se ha eliminado la persona del indicador de forma exitosa', 'danger');
+        return redirect()->route('socialIndicator.more', $social_number);
     }
 }

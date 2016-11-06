@@ -12,6 +12,8 @@ use App\material_provider;
 
 use Laracast\Flash\FlashServiceProvider;
 
+use App\constant;
+
 class MaterialProviderController extends Controller
 {
     /**
@@ -34,7 +36,8 @@ class MaterialProviderController extends Controller
     public function create()
     {
         //
-        return view('admin.materials_providers.create');
+        $constant = constant::orderBy('created_at', 'desc')->first();
+        return view('admin.materials_providers.create')->with('constant', $constant);
     }
 
     /**

@@ -39,6 +39,8 @@
 	</table>
 	{!! $material_provider->render() !!}
 
+
+
 	<br>
 	<br>
 	<a href="{{ route('material_provider.create') }}" class="button" style="text-decoration:none;">Realizar registro de material</a>

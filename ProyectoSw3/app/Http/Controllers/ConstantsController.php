@@ -22,6 +22,14 @@ class ConstantsController extends Controller
     public function index()
     {
         //
+        $constant = constant::orderBy('created_at', 'desc')->first();
+        if ($constant == null) {
+            return redirect()->route('constant.create');
+        }else{
+            //dd($constant);
+            return view('admin.constants.index')->with('constant', $constant);
+        }
+        
     }
 
     /**
@@ -32,7 +40,7 @@ class ConstantsController extends Controller
     public function create()
     {
         //
-        //$board_quantity
+         return view('admin.constants.create');
     }
 
     /**
@@ -44,6 +52,10 @@ class ConstantsController extends Controller
     public function store(Request $request)
     {
         //
+        $constant = new constant($request->all());
+        $constant->save();
+        flash('Se ha registrado los precios', 'success');
+        return redirect()->route('constant.index');
     }
 
     /**
@@ -66,6 +78,8 @@ class ConstantsController extends Controller
     public function edit($id)
     {
         //
+        $constant = constant::find($id);
+        return view('admin.constants.edit')->with('constant', $constant);
     }
 
     /**
@@ -78,6 +92,20 @@ class ConstantsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $constant = constant::find($id);
+        $constant->pet = $request->pet;
+        $constant->board = $request->board;
+        $constant->archive = $request->archive;
+        $constant->blow = $request->blow;
+        $constant->junk = $request->junk;
+        $constant->glass = $request->glass;
+        $constant->metal = $request->metal;
+        $constant->plega = $request->plega;
+        $constant->frame = $request->frame;
+
+        $constant->save();
+        flash('Se han actualizado los precios exitosamente.','warning');
+        return redirect()->route('constant.index');
     }
 
     /**

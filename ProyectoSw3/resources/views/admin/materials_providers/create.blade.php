@@ -32,5 +32,59 @@
 			{!! Form::submit('Registrar material') !!}
 
 	{!! Form::close() !!}
+
+
+	@if( $constant == null)
+	<h3 style="text-align:center;">No hay lista de precios registrada, para registrar precios ir a la pestaña de Precios de los materiales.</h3>
+	@else
+		<br>
+		<h3 style="text-align:center;">Lista de precios</h3>
+		<br>
+		<table>	
+		<thead>
+			<th>Material</th>
+			<th>Precio del material por kilogramo (COP)</th>
+		</thead>	
+		<tbody>
+				<tr>
+					<td>Pet</td>
+					<td>${{ $constant->pet }}</td>
+				</tr>
+				<tr>
+					<td>Cartón</td>
+					<td>${{ $constant->board }}</td>
+				</tr>
+				<tr>
+					<td>Archivo</td>
+					<td>${{ $constant->archive }}</td>
+				</tr>
+				<tr>
+					<td>Soplado</td>
+					<td>${{ $constant->blow }}</td>
+				</tr>
+				<tr>
+					<td>Chatarra</td>
+					<td>${{ $constant->junk }}</td>
+				</tr>
+				<tr>
+					<td>Metal</td>
+					<td>${{ $constant->metal }}</td>
+				</tr>
+				<tr>
+					<td>Plega</td>
+					<td>${{ $constant->plega }}</td>
+				</tr>
+				<tr>
+					<td>Vidrio</td>
+					<td>${{ $constant->glass }}</td>
+				</tr>																				
+				<tr>
+					<td>Marco</td>
+					<td>${{ $constant->frame }}</td>
+				</tr>
+		</tbody>
+	</table>
+	@endif
+
 </div>
 @endsection

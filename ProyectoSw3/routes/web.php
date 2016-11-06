@@ -23,11 +23,26 @@ Route::group(['prefix' => 'admin'], function () {
    Route::resource('material_provider', 'MaterialProviderController');
 
    Route::get('material_provider/{id}/destroy', [
-   			'uses'	=>	'MaterialProviderController@destroy',
-   			'as'	=>	'material_provider.destroy'
+   			'uses'   =>	'MaterialProviderController@destroy',
+   			'as'     =>	'material_provider.destroy'
    	]);
 
+
    Route::resource('person', 'PersonsController');
+
+   
+   Route::get('person/{id}/{social_number}/destroy', [
+            'uses'   => 'PersonsController@destroy',
+            'as'     => 'person.destroy'
+      ]);
+
+
+   Route::resource('activity', 'ActivityController');
+
+   Route::get('activity/{id}/{social_number}/destroy', [
+        'uses'   => 'ActivityController@destroy',
+        'as'     => 'activity.destroy'
+   ]);
 
    Route::resource('constant', 'ConstantsController');
 
@@ -44,7 +59,13 @@ Route::group(['prefix' => 'admin'], function () {
 
    Route::resource('indicator', 'IndicatorsController');
 
+   Route::get('socialIndicator/{social_number}/more', [
+         'uses'   => 'socialIndicatorController@more',
+         'as'     => 'socialIndicator.more'
+   ]);
 
+
+   Route::resource('socialIndicator', 'socialIndicatorController');
 
    
 });

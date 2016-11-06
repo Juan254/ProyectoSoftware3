@@ -24,7 +24,6 @@ class ConstantsTable extends Migration
             $table->float('plega');
             $table->float('glass');
             $table->float('frame');
-            $table->text('descripton');
             $table->timestamps();
         });
     }

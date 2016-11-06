@@ -1,3 +1,4 @@
+
 @extends('admin.template.main')
 
 @section('title', 'Cantidad de material por cliente')
