@@ -18,9 +18,6 @@
 			{!! Form::label('last_name', 'Apellidos') !!}
 			{!! Form::text('last_name', null, [ 'placeholder' => ' Ingrese su apellido', 'required' => 'true']) !!}
 
-			{!! Form::label('username', 'Usuario') !!}
-			{!! Form::text('username', null, [ 'placeholder' => ' Ingrese su nombre de usuario', 'required' => 'true']) !!}
-
 			{!! Form::label('password', 'Contraseña') !!}
 			{!! Form::password('password',  [ 'placeholder' => ' *****************', 'required' => 'true', 'maxlength' => '15']) !!}
 			

@@ -20,6 +20,8 @@ use Laracast\Flash\FlashServiceProvider;
 
 class SocialIndicatorController extends Controller
 {
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -27,27 +29,27 @@ class SocialIndicatorController extends Controller
      */
     public function index()
     {
-        //
         $personas = person::all();
-        $social = array('social1' => $personas->where('social_number', 'Recuperador Caracterizado' )->count() ,
-                        'social2' => $personas->where('social_number', 'Recuperador Asociado' )->count(),
-                        'social3' => $personas->where('social_number', 'Reciclador Caracterizado' )->count(),
-                        'social4' => $personas->where('social_number', 'Reciclador Asociado' )->count(),
-                        'social5' => $personas->where('social_number', 'Reciclador en tratamiento psicológico' )->count(),
-                        'social6' => $personas->where('social_number', 'Reciclador en tratamiento médico' )->count(),
-                        'social7' => $personas->where('social_number', 'Reciclador en Acompañamiento social' )->count(),
-                        'social8' => $personas->where('social_number', 'Reciclador en acompañamiento de enfermería' )->count(),
-                        'social9' => $personas->where('social_number', 'Reciclador con Articulación en el centro de escucha' )->count(),
-                        'social10' => $personas->where('social_number', 'Reciclador Sensibilizado en inclusión social' )->count(),
-                        'social11' => $personas->where('social_number', 'Reciclador En acompañamiento en su inclusión social' )->count(),
-                        'social12' => $personas->where('social_number', 'Reciclador en acompañamiento con alimentación' )->count(),
-                        'social13' => $personas->where('social_number', 'Reciclador en acompañamiento con alojamiento' )->count(),
-                        'social14' => $personas->where('social_number', 'Reciclador Capacitado en asociatividad' )->count(),
-                        'social15' => $personas->where('social_number', 'Recuperador Capacitado en asociatividad' )->count(),
-                        'social16' => $personas->where('social_number', 'Reciclador Capacitado en empresarialidad' )->count(),
-                        'social17' => $personas->where('social_number', 'Recuperador Capacitado en empresarialidad' )->count(),
+        $socialnumber="social_number";
+        $social = array('social1' => $personas->where($socialnumber, 'Recuperador Caracterizado' )->count() ,
+                        'social2' => $personas->where($socialnumber, 'Recuperador Asociado' )->count(),
+                        'social3' => $personas->where($socialnumber, 'Reciclador Caracterizado' )->count(),
+                        'social4' => $personas->where($socialnumber, 'Reciclador Asociado' )->count(),
+                        'social5' => $personas->where($socialnumber, 'Reciclador en tratamiento psicológico' )->count(),
+                        'social6' => $personas->where($socialnumber, 'Reciclador en tratamiento médico' )->count(),
+                        'social7' => $personas->where($socialnumber, 'Reciclador en Acompañamiento social' )->count(),
+                        'social8' => $personas->where($socialnumber, 'Reciclador en acompañamiento de enfermería' )->count(),
+                        'social9' => $personas->where($socialnumber, 'Reciclador con Articulación en el centro de escucha' )->count(),
+                        'social10' => $personas->where($socialnumber, 'Reciclador Sensibilizado en inclusión social' )->count(),
+                        'social11' => $personas->where($socialnumber, 'Reciclador En acompañamiento en su inclusión social' )->count(),
+                        'social12' => $personas->where($socialnumber, 'Reciclador en acompañamiento con alimentación' )->count(),
+                        'social13' => $personas->where($socialnumber, 'Reciclador en acompañamiento con alojamiento' )->count(),
+                        'social14' => $personas->where($socialnumber, 'Reciclador Capacitado en asociatividad' )->count(),
+                        'social15' => $personas->where($socialnumber, 'Recuperador Capacitado en asociatividad' )->count(),
+                        'social16' => $personas->where($socialnumber, 'Reciclador Capacitado en empresarialidad' )->count(),
+                        'social17' => $personas->where($socialnumber, 'Recuperador Capacitado en empresarialidad' )->count(),
                          );
-
+//
         $social = (object) $social;
         return view('admin.socialIndicator.socialIndex')->with('social', $social);
     }
@@ -120,8 +122,8 @@ class SocialIndicatorController extends Controller
 
 
     public function more($social_number){
-        $persons= person::where('social_number', $social_number )->paginate(5);
-        $activities= activity::all()->where('social_number', $social_number);
+        $persons= person::where($socialnumber, $social_number )->paginate(5);
+        $activities= activity::all()->where($socialnumber, $social_number);
         $social = array('social_number' => $social_number);
         $social = (object) $social;
         return view('admin.socialIndicator.seeMore')->with('persons', $persons)->with('activities', $activities)->with('social', $social);

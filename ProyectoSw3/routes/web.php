@@ -11,12 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-   return view('welcome');
-});
 
-
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
    
    Route::resource('users' , 'UsersController');
 
@@ -69,3 +65,29 @@ Route::group(['prefix' => 'admin'], function () {
 
    
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('logout', [
+      'uses'   => 'Auth\LoginController@logout',
+      'as'     => 'auth.logout'
+]);
+
+Route::get('register',[
+      'uses'   => 'Auth\LoginController@getLogin',
+      'as'     => 'login.getLogin'
+]);
+
+Route::get('password/reset',[
+      'uses'   => 'Auth\LoginController@getLogin',
+      'as'     => 'login.getLogin'
+]);
+
+
+Route::get('/', [
+   'uses'   => 'Auth\LoginController@getLogin',
+   'as'     => 'login.getLogin'
+]);
+

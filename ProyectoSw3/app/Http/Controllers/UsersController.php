@@ -42,10 +42,19 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
-        $user = new User($request->all());
-        $user->password = bcrypt($request->password);
-        $user->save();
-        return view('admin.users.create');
+        
+        $error = User::all()->where('email', $request->email)->first();
+        if ($error != null) {
+            flash('Ya está ingresado ese correo electrónico', 'danger');
+            return redirect()->route('users.create');  
+        }else{
+            $user = new User($request->all());
+            $user->password = bcrypt($request->password);
+            $user->save();
+            return view('admin.users.create');
+        }
+        
+
     }
 
     /**

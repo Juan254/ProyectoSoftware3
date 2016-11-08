@@ -12,6 +12,8 @@ use App\person;
 
 class PersonsController extends Controller
 {
+    $recuperator='Recuperador';
+
     /**
      * Display a listing of the resource.
      *
@@ -42,31 +44,18 @@ class PersonsController extends Controller
     public function store(Request $request)
     {
         
-        if ($request->social_number == '' ||  $request->profesion == '') {
-            echo "<script> alert('Debe seleccionar un oficio y un estado para la persona.')</script>";
+        if ($request->profesion == $recuperator && ( $request->social_number != 'Caracterizado' ||
+             $request->social_number != 'Asociado' ||  $request->social_number != 'Capacitado en asociatividad' 
+             || $request->social_number != 'Capacitado en empresarialidad')) 
+        {
+            echo "<script> alert('Ha ocurrido un error, verifique el estado y/o el oficio de la persona.')</script>";
             return view('admin.persons.create');
-        }else{
-            if ($request->profesion == 'Recuperador' && $request->social_number == 'Caracterizado' ||
-                $request->profesion == 'Recuperador' && $request->social_number == 'Asociado' ||
-                $request->profesion == 'Recuperador' && $request->social_number == 'Capacitado en asociatividad' ||
-                $request->profesion == 'Recuperador' && $request->social_number == 'Capacitado en empresarialidad'
-                ) {
-                $oficio= "".$request->profesion." ".$request->social_number;
-                $person= new person($request->all());
-                $person->social_number = $oficio;
-                $person->save();
-                return redirect()->route('socialIndicator.index');
-
-            } elseif ($request->profesion == 'Reciclador') {
-                $oficio= "".$request->profesion." ".$request->social_number;
-                $person= new person($request->all());
-                $person->social_number = $oficio;
-                $person->save();
-                return redirect()->route('socialIndicator.index');
-            }else{
-                echo "<script> alert('Ese estado no está disponible para el Recuperador.')</script>";
-                return view('admin.persons.create');
-            }
+        } else {
+            $oficio= "".$request->profesion." ".$request->social_number;
+            $person= new person($request->all());
+            $person->social_number = $oficio;
+            $person->save();
+            return redirect()->route('socialIndicator.index');
         }
     }
 

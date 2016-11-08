@@ -21,12 +21,10 @@ class ConstantsController extends Controller
      */
     public function index()
     {
-        //
         $constant = constant::orderBy('created_at', 'desc')->first();
         if ($constant == null) {
             return redirect()->route('constant.create');
         }else{
-            //dd($constant);
             return view('admin.constants.index')->with('constant', $constant);
         }
         

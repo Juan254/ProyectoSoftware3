@@ -32,6 +32,8 @@ and open the template in the editor.
                 <li><a href="{{ route('socialIndicator.index') }}" >Indicadores Sociales</a></li>
                 <li><a href="{{route( 'material_provider.index')}}"  >Lista de registros</a></li>
                 <li><a href="{{ route('constant.index')}}">Precio de los materiales</a></li>
+                <li><a href="{{ route('auth.logout')}}">Desconectarse</a></li>
+                
             </ul>
         </nav>
         <br/>
@@ -42,7 +44,11 @@ and open the template in the editor.
         @yield('content')
         <br />
         <footer>
-            footer...
+
+            <?php use Illuminate\Support\Facades\Auth;
+
+                echo "Bienvenido ".Auth::user()->name." ".Auth::user()->last_name;
+            ?>
         </footer>
     </body>
 </html>
