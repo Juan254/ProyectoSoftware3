@@ -18,10 +18,10 @@
 			{!! Form::select('material_type', [ '' => ' Seleccione el tipo de material a depositar', 'Pet' => 'Pet','Cartón' => 'Cartón','Archivo' => 'Archivo','Soplado' => 'Soplado','Chatarra' => 'Chatarra','Metal' => 'Metal','Plega' => 'Plega','Vidrio' => 'Vidrio','Marco'=> 'Marco' ]) !!}
 
 			{!!  Form::label('buy_price', 'Precio del material a depositar por kilogramo a la fecha') !!}
-			{!!  Form::number('buy_price', 0, [ 'required' => 'true']) !!}
+			{!!  Form::number('buy_price', 0, [ 'required' => 'true'  , 'max' => '10000', 'min' => '0']) !!}
 
 			{!! Form::label('quantity', 'Cantidad de material a depositar en kilogramos (kg)') !!}
-			{!! Form::number('quantity', 0, [ 'placeholder' => ' Ingrese la cantidad de material a depositado', 'required' => 'true']) !!}
+			{!! Form::number('quantity', 0, [ 'placeholder' => ' Ingrese la cantidad de material a depositado', 'required' => 'true'  , 'max' => '500', 'min' => '0']) !!}
 
 			{!! Form::label('municipality', 'Municipio del cual proviene el proveedor') !!}
 			{!! Form::select('municipality', [ 'Armenia' => ' Seleccione el municipio del cual proviene el proveedor', 'Armenia' => 'Armenia','Buenavista' => 'Buenavista','Calarcá' => 'Calarcá','Circasia' => 'Circasia','Córdoba' => 'Córdoba','Filandia' => 'Filandia','Génova' => 'Génova','La Tebaida' => 'La Tebaida','Montenegro'=> 'Montenegro','Pijao'=> 'Pijao','Quimbaya'=> 'Quimbaya','Salento'=> 'Salento' ]) !!}

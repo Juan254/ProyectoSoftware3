@@ -10,10 +10,11 @@ use App\Http\Controllers\Controller;
 
 use App\person;
 
+use Laracast\Flash\FlashServiceProvider;
+
 class PersonsController extends Controller
 {
-    $recuperator='Recuperador';
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -43,10 +44,11 @@ class PersonsController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $recuperator='Recuperador';        
         if ($request->profesion == $recuperator && ( $request->social_number != 'Caracterizado' ||
              $request->social_number != 'Asociado' ||  $request->social_number != 'Capacitado en asociatividad' 
-             || $request->social_number != 'Capacitado en empresarialidad')) 
+             || $request->social_number != 'Capacitado en empresarialidad') ||
+             $request->profesion == '' || $request->social_number == '') 
         {
             echo "<script> alert('Ha ocurrido un error, verifique el estado y/o el oficio de la persona.')</script>";
             return view('admin.persons.create');
@@ -55,6 +57,7 @@ class PersonsController extends Controller
             $person= new person($request->all());
             $person->social_number = $oficio;
             $person->save();
+            flash('Se ha ingresado la persona al indicador correctamente', 'success');
             return redirect()->route('socialIndicator.index');
         }
     }

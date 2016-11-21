@@ -22,7 +22,7 @@
 			{!! Form::number('age', null, [ 'placeholder' => ' Ingrese su edad', 'required' => 'true', 'max' => '99' ]) !!}
 
 			{!! Form::label('id_card', 'Número de identificación') !!}
-			{!! Form::number('id_card', null, [ 'placeholder' => ' Ingrese su número de identificación', 'required' => 'true', 'max' => '9999999999' ]) !!}
+			{!! Form::number('id_card', null, [ 'placeholder' => ' Ingrese su número de identificación', 'required' => 'true', 'max' => '9999999999', 'min' => '1000000000' ]) !!}
 
 			{!! Form::label('municipality', 'Municipio del cual proviene') !!}
 			{!! Form::select('municipality', [ 'Armenia' => ' Seleccione el municipio del cual proviene', 'Armenia' => 'Armenia','Buenavista' => 'Buenavista','Calarcá' => 'Calarcá','Circasia' => 'Circasia','Córdoba' => 'Córdoba','Filandia' => 'Filandia','Génova' => 'Génova','La Tebaida' => 'La Tebaida','Montenegro'=> 'Montenegro','Pijao'=> 'Pijao','Quimbaya'=> 'Quimbaya','Salento'=> 'Salento' ]) !!}

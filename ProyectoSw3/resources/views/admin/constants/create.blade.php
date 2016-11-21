@@ -12,31 +12,31 @@
 	{!! Form::open(['route' => 'constant.store', 'method' => 'POST']) !!}
 		
 			{!!  Form::label('pet', 'Precio del PET por kilogramo a la fecha') !!}
-			{!!  Form::number('pet', 0, [ 'required' => 'true']) !!}
+			{!!  Form::number('pet', 0, [ 'required' => 'true' , 'max' => '10000', 'min' => '0']) !!}
 
 			{!! Form::label('board', 'Precio del cartón por kilogramo a la fecha') !!}
-			{!! Form::number('board', 0, [  'required' => 'true']) !!}
+			{!! Form::number('board', 0, [  'required' => 'true', 'max' => '10000', 'min' => '0']) !!}
 
 			{!!  Form::label('archive', 'Precio del archivo por kilogramo a la fecha') !!}
-			{!!  Form::number('archive', 0, [ 'required' => 'true']) !!}
+			{!!  Form::number('archive', 0, [ 'required' => 'true', 'max' => '10000', 'min' => '0']) !!}
 
 			{!! Form::label('blow', 'Precio del soplado por kilogramo a la fecha') !!}
-			{!! Form::number('blow', 0, [ 'required' => 'true']) !!}
+			{!! Form::number('blow', 0, [ 'required' => 'true', 'max' => '10000', 'min' => '0']) !!}
 
 			{!! Form::label('junk', 'Precio de la chatarra por kilogramo a la fecha') !!}
-			{!! Form::number('junk', 0, [ 'required' => 'true']) !!}
+			{!! Form::number('junk', 0, [ 'required' => 'true', 'max' => '10000', 'min' => '0']) !!}
 
 			{!! Form::label('glass', 'Precio del vidrio por kilogramo a la fecha') !!}
-			{!! Form::number('glass', 0, [ 'required' => 'true']) !!}
+			{!! Form::number('glass', 0, [ 'required' => 'true', 'max' => '10000', 'min' => '0']) !!}
 
 			{!! Form::label('metal', 'Precio del metal por kilogramo a la fecha') !!}
-			{!! Form::number('metal', 0, [ 'required' => 'true']) !!}
+			{!! Form::number('metal', 0, [ 'required' => 'true', 'max' => '10000', 'min' => '0']) !!}
 						
 			{!! Form::label('plega', 'Precio de la plega por kilogramo a la fecha') !!}
-			{!! Form::number('plega', 0, [ 'required' => 'true']) !!}
+			{!! Form::number('plega', 0, [ 'required' => 'true', 'max' => '10000', 'min' => '0']) !!}
 			
 			{!! Form::label('frame', 'Precio del archivo por kilogramo a la fecha') !!}
-			{!! Form::number('frame', 0, [ 'required' => 'true']) !!}
+			{!! Form::number('frame', 0, [ 'required' => 'true', 'max' => '10000', 'min' => '0']) !!}
 
 			{!! Form::submit('Registrar registrar precios') !!}
 

@@ -16,6 +16,7 @@ use App\activity;
 
 use Laracast\Flash\FlashServiceProvider;
 
+
 class ActivityController extends Controller
 {
     /**
@@ -46,13 +47,15 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->social_number == '') {
-            echo "<script> alert('Debe seleccionar un indicador al cual pertenecerá la actividad.')</script>";
+        $request->name = trim($request->name);
+        if ($request->social_number == '' || $request->name == '') {
+            echo "<script> alert('Ha ocurrido un error, asegurese de ingresar un indicador y el nombre correctamente.')</script>";
             return view('admin.activity.create');
         }else{
             $activity = new activity($request->all());
             $activity->social_number= ''.$request->social_number;
             $activity->save();
+            flash('Se ha ingresado la actividad correctamente', 'success');
             return redirect()->route('socialIndicator.index');
         }
     }

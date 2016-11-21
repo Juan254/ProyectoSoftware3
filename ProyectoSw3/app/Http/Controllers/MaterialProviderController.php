@@ -49,8 +49,8 @@ class MaterialProviderController extends Controller
     public function store(Request $request)
     {
         //    
-        if ($request->provider_type == '') {
-            flash('Debe de ingresar un tipo de proveedor', 'warning');
+        if ($request->provider_type == '' || !(strtotime($request->date) && 1 === preg_match('~[0-9]~', $request->date)) ) {
+            flash('Debe de ingresar un tipo de proveedor o fecha válida', 'warning');
 
         }else{
             $material_provider=new material_provider($request->all());
@@ -95,15 +95,21 @@ class MaterialProviderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $material_provider = material_provider::find($id);
-        $material_provider->quantity = $request->quantity;
-        $material_provider->municipality = $request->municipality;
-        $material_provider->buy_price = $request->buy_price;
-        $material_provider->date = $request->date;
 
-        $material_provider->save();
-        flash('El registro ha sido editado con éxito.','warning');
-        return redirect()->route('material_provider.index');
+        if (!(strtotime($request->date) && 1 === preg_match('~[0-9]~', $request->date)) ) {
+            flash('Debe de ingresar un tipo de fecha válida', 'warning');
+
+        }else{
+            $material_provider = material_provider::find($id);
+            $material_provider->quantity = $request->quantity;
+            $material_provider->municipality = $request->municipality;
+            $material_provider->buy_price = $request->buy_price;
+            $material_provider->date = $request->date;
+            $material_provider->save();
+            flash('El registro ha sido editado con éxito.','warning');
+            return redirect()->route('material_provider.index');
+        }
+
     }
 
     /**
