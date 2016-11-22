@@ -47,8 +47,7 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        $request->name = trim($request->name);
-        if ($request->social_number == '' || $request->name == '') {
+        if ($request->social_number == '' || trim($request->name) == '') {
             echo "<script> alert('Ha ocurrido un error, asegurese de ingresar un indicador y el nombre correctamente.')</script>";
             return view('admin.activity.create');
         }else{
@@ -102,7 +101,6 @@ class ActivityController extends Controller
      */
     public function destroy($id, $social_number)
     {
-        //
         $activity = activity::find($id);
         $activity->delete();
         flash('Se ha eliminado la actividad del indicador de forma exitosa', 'danger');
